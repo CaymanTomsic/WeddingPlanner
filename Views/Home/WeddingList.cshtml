@@ -1,0 +1,36 @@
+<div class="text-center">
+    <h1 class="text-success">Weddings</h1>
+    <a href="/logout"><button class="btn btn-outline-danger">Logout!</button></a>
+    <a href="/weddings/new"><button class="btn btn-outline-primary">Add a Wedding</button></a>
+    <div class="text-center d-flex flex-column align-items-center">
+        <table>
+            <tr>
+                <th>Wedding</th>
+                <th>Date</th>
+                <th>Guests</th>
+                <th>Action</th>
+            </tr>
+            @{
+                foreach(Wedding wedding in ViewBag.AllWeddings)
+                {
+                    <tr>
+                        <td><a asp-action="WeddingDetails" asp-route-id=@wedding.WeddingId>@wedding.WeddingOne & @wedding.WeddingTwo</a></td>
+                        <td>@wedding.Date</td>
+                        <td>@wedding.Guests.Count</td>
+                        @{
+                            if(wedding.Guests.Any(weddingGuest => weddingGuest.Guest == ViewBag.CurrentUser))
+                            {
+                                <td><a asp-action="RemoveRSVPWedding" asp-route-id=@wedding.WeddingId><button>Un-RSVP</button></a></td>
+
+                            }
+                            else
+                            {
+                                <td><a asp-action="RSVPWedding" asp-route-id=@wedding.WeddingId><button>RSVP</button></a></td>
+                            }
+                        }
+                    </tr>
+                }
+            }
+        </table>
+    </div>
+</div>

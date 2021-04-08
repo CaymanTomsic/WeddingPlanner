@@ -1,0 +1,15 @@
+<div class="text-center">
+    <h1 class="text-success">Weddings</h1>
+    <a href="/logout"><button class="btn btn-outline-danger">Logout!</button></a>
+    <a href="/WeddingList"><button class="btn btn-outline-primary">HomePage</button></a>
+    <h3>@ViewBag.Wedding.WeddingOne & @ViewBag.Wedding.WeddingTwo Wedding</h3>
+    <ul>
+        Guests:
+        @{
+            foreach(WeddingGuest guest in ViewBag.Wedding.Guests)
+            {
+                <li> @guest.Guest.FirstName @guest.Guest.LastName</li>
+            }
+        }
+    </ul>
+</div>

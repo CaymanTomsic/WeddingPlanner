@@ -1,0 +1,13 @@
+<div class="text-center">
+    <h1 class="display-4">Register to this cool site</h1>
+    @model LoginUser
+    <form asp-action="LoginAction" method="POST" class="d-flex flex-column align-items-center">
+        <label asp-for="LoginEmail"></label>
+        <span class="text-danger" asp-validation-for="LoginEmail" class="text-danger"></span>
+        <input type="email" asp-for="LoginEmail"/>
+        <label asp-for="LoginPassword"></label>
+        <span class="text-danger" asp-validation-for="LoginPassword" class="text-danger"></span>
+        <input type="password" asp-for="LoginPassword"/>
+        <button type="submit" class="btn btn-outline-primary">Login User</button>
+    </form>
+</div>
